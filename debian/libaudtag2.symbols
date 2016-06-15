@@ -1,0 +1,5 @@
+libaudtag.so.2 libaudtag2 #MINVER#
+ _ZN6audtag8read_tagER7VFSFileP5TupleP5IndexIcE@Base 3.7.1
+ (c++)"audtag::image_read(VFSFile&)@Base" 3.6
+ (c++)"audtag::tuple_read(Tuple&, VFSFile&)@Base" 3.6
+ (c++)"audtag::tuple_write(Tuple const&, VFSFile&, audtag::TagType)@Base" 3.6

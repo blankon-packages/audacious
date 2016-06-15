@@ -1,0 +1,37 @@
+Description: Drop COPYING file to install and use for it system path.
+Author: Mateusz Łukasik <mati75@linuxmint.pl>
+Origin: vendor
+
+--- a/Makefile
++++ b/Makefile
+@@ -3,7 +3,6 @@ SUBDIRS = src man images po
+ DISTCLEAN = audacious.pc buildsys.mk config.h config.log config.status extra.mk
+ 
+ DATA = AUTHORS \
+-       COPYING \
+        images/about-logo.png \
+        images/about-logo.svg \
+        images/album.png \
+ 
+--- a/src/libaudgui/about.cc
++++ b/src/libaudgui/about.cc
+@@ -98,7 +98,7 @@ static GtkWidget * create_about_window (
+     if (! g_file_get_contents (credits_path, & credits, nullptr, nullptr))
+         credits = g_strdup_printf ("Unable to load %s; check your installation.", (const char *) credits_path);
+ 
+-    StringBuf license_path = filename_build ({data_dir, "COPYING"});
++    StringBuf license_path = filename_build ({"/usr/share/common-licenses/BSD"});
+     if (! g_file_get_contents (license_path, & license, nullptr, nullptr))
+         license = g_strdup_printf ("Unable to load %s; check your installation.", (const char *) license_path);
+ 
+--- a/src/libaudqt/about.cc
++++ b/src/libaudqt/about.cc
+@@ -35,7 +35,7 @@ static QTabWidget * buildCreditsNotebook
+ {
+     const char * data_dir = aud_get_path (AudPath::DataDir);
+     const char * titles[2] = {N_("Credits"), N_("License")};
+-    const char * filenames[2] = {"AUTHORS", "COPYING"};
++    const char * filenames[2] = {"AUTHORS", "/usr/share/common-licenses/BSD"};
+ 
+     auto tabs = new QTabWidget (parent);
+ 
